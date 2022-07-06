@@ -12,7 +12,6 @@ solver = TwoCaptcha(twocaptcha_key)
 class Bot(WebSocketApp):
     def __init__(self):
         self.prize = 3000
-        self.joined = 0
 
         super().__init__(
             url=wss,
@@ -53,11 +52,7 @@ class Bot(WebSocketApp):
             url=wss,
             on_open=self.on_open, 
             on_close=self.on_close,
-            on_message=self.on_message,
-            header=[
-                "Accept-Encoding: gzip, deflate, br", 
-                "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
-            ]            
+            on_message=self.on_message
         )
         super().run_forever()
 
